@@ -41,9 +41,8 @@ module.exports.handleUserLogin = async function(req, res){
         })
     }
     else{
-        const sessionId = uuidv4();
-        setUser(sessionId, user);
-        res.cookie('uid', sessionId);
+        const token = setUser(user);
+        res.cookie('uid', token);
         return res.status(201).json({
                     message : 'User Login  successfully',
         })
